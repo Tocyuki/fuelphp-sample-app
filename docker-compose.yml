@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  web:
+    container_name: nginx
+    build: docker/nginx
+    ports:
+      - 9080:80
+    volumes:
+      - ./:/var/www/sample_app
+    depends_on:
+      - app
+
+  app:
+    container_name: php
+    build: docker/php
+    volumes:
+      - ./:/var/www/sample_app
+    depends_on:
+      - db
+      - cache
+
+  db:
+    container_name: mysql
+    # build: docker/db
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sample_app
+      MYSQL_USER: sample_app
+      MYSQL_PASSWORD: sample_app
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+
+  cache:
+    container_name: redis
+    image: redis:latest
+    volumes:
+      - ./docker/redis/data:/data
