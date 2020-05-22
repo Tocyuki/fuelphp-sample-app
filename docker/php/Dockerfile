@@ -6,4 +6,4 @@ RUN apt-get update \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www/sample_app
+WORKDIR /var/www/html

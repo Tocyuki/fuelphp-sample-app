@@ -7,7 +7,7 @@ services:
     ports:
       - 9080:80
     volumes:
-      - ./:/var/www/sample_app
+      - ./src:/var/www/html
     depends_on:
       - app
 
@@ -15,14 +15,13 @@ services:
     container_name: php
     build: docker/php
     volumes:
-      - ./:/var/www/sample_app
+      - ./src:/var/www/html
     depends_on:
       - db
       - cache
 
   db:
     container_name: mysql
-    # build: docker/db
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root

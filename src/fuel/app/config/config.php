@@ -180,7 +180,7 @@ return array(
 	 *  Change the server's default timezone. This is optional.
 	 */
 
-	'default_timezone' => 'Asia/Tokyo',
+	// 'default_timezone' => null,
 
 	/**
 	 * -------------------------------------------------------------------------

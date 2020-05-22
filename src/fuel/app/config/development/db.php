@@ -22,9 +22,9 @@
 return array(
 	'default' => array(
 		'connection' => array(
-			'dsn'      => 'mysql:host=db;dbname=sample_app',
-			'username' => 'sample_app',
-			'password' => 'sample_app',
+			'dsn'      => 'mysql:host=localhost;dbname=fuel_dev',
+			'username' => 'root',
+			'password' => 'root',
 		),
 	),
 );
