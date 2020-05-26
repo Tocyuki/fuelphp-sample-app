@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    container_name: nginx
+    container_name: fuel_nginx
     build: docker/nginx
     ports:
       - 9080:80
@@ -12,7 +12,7 @@ services:
       - app
 
   app:
-    container_name: php
+    container_name: fuel_php
     build: docker/php
     volumes:
       - ./src:/var/www/html
@@ -21,7 +21,7 @@ services:
       - cache
 
   db:
-    container_name: mysql
+    container_name: fuel_mysql
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -34,7 +34,7 @@ services:
       - ./docker/db/data:/var/lib/mysql
 
   cache:
-    container_name: redis
+    container_name: fuel_redis
     image: redis:latest
     volumes:
       - ./docker/redis/data:/data
